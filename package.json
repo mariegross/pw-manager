@@ -1,0 +1,24 @@
+{
+  "name": "pw-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "minimist": "^1.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariegross/pw-manager.git"
+  },
+  "author": "Marie Gross",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariegross/pw-manager/issues"
+  },
+  "homepage": "https://github.com/mariegross/pw-manager#readme"
+}
