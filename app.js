@@ -5,7 +5,7 @@ const { isMasterPasswordCorrect } = require("./lib/validation");
 
 async function run() {
   const masterPassword = await askForMasterPassword();
-  if (!isMasterPasswordCorrect(masterPassword)) {
+  if (!(await isMasterPasswordCorrect(masterPassword))) {
     console.error("Password is incorrect.");
     return run();
   }
