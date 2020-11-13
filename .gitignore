@@ -105,3 +105,4 @@ dist
 
 db.json
 .masterPassword
+.env
