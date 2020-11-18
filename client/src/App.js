@@ -1,22 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { getPassword } from "./api/passwords";
 
 function App() {
+  const [password, setPassword] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const doFetch = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const newPassword = await getPassword("wifi");
+        setPassword(newPassword);
+      } catch (error) {
+        console.error(error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    doFetch();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {loading && <div>Loading...</div>}
+        {error && <div>{error.message}</div>}
+        {password}
       </header>
     </div>
   );
