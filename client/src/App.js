@@ -5,7 +5,7 @@ import { getPassword } from "./api/passwords";
 
 function App() {
   const [password, setPassword] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
