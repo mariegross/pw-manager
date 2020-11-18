@@ -5,6 +5,7 @@ const { connect } = require("./lib/database");
 const { request } = require("express");
 
 const app = express();
+app.use(express.json());
 const port = 3100;
 
 app.get("/api/passwords/:name", async (request, response) => {
@@ -24,8 +25,18 @@ app.get("/api/passwords/:name", async (request, response) => {
   }
 });
 
-app.post("/api/passwords", (request, response) => {
-  response.send("Under construction");
+app.post("/api/passwords/", async (request, response) => {
+  const password = request.body;
+
+  try {
+    await setPassword(password.name, password.value);
+    response.send(`Successfully set ${password.name}`);
+  } catch (error) {
+    console.error(error);
+    response
+      .status(500)
+      .send("An unexpected error occured. Please try again later.");
+  }
 });
 
 async function run() {
