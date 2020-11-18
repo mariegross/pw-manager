@@ -1,27 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { getPassword } from "./api/passwords";
+import useAsync from "./hooks/useAsync";
 
 function App() {
-  const [password, setPassword] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { data, loading, error, doFetch } = useAsync(() =>
+    getPassword("facebook")
+  );
 
   useEffect(() => {
-    const doFetch = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const newPassword = await getPassword("wifi");
-        setPassword(newPassword);
-      } catch (error) {
-        console.error(error);
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
     doFetch();
   }, []);
 
@@ -29,9 +17,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <form>
+          <label>Password for...
+            <input type="submit" value="password" />
+          </label>
+        </form>
         {loading && <div>Loading...</div>}
         {error && <div>{error.message}</div>}
-        {password}
+        {data}
       </header>
     </div>
   );
