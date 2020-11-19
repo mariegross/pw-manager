@@ -4,9 +4,10 @@ import "./App.css";
 import { getPassword } from "./api/passwords";
 import useAsync from "./hooks/useAsync";
 
+
 function App() {
   const { data, loading, error, doFetch } = useAsync(() =>
-    getPassword("facebook")
+    getPassword("wifi")
   );
 
   useEffect(() => {
@@ -18,9 +19,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <form>
-          <label>Password for...
-            <input type="submit" value="password" />
+          <label>Password for...<br/>
+            <input type="text" name="name" />
           </label>
+            <input type="submit" value="Submit" />
         </form>
         {loading && <div>Loading...</div>}
         {error && <div>{error.message}</div>}
