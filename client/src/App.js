@@ -32,7 +32,7 @@ function App() {
         </form>
         {loading && <div>Loading...</div>}
         {error && <div>{error.message}</div>}
-        {data}
+        <div>{data}</div>
       </header>
     </div>
   );
