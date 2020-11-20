@@ -19,7 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js",
     "client": "cd client && npm run start",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run storybook\"",
+    "storybook": "cd client && npm run storybook",
     "postinstall": "cd client && npm install"
   },
   "repository": {
