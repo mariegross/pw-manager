@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const { getPassword, setPassword } = require("./lib/passwords");
 const { connect } = require("./lib/database");
-const { request } = require("express");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -39,13 +39,24 @@ app.post("/api/passwords/", async (request, response) => {
   }
 });
 
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.use(
+  "/storybook",
+  express.static(path.join(__dirname, "client/storybook-static"))
+);
+
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+
 async function run() {
   console.log("Connecting to database...");
   await connect(process.env.MONGODB_URI, process.env.MONGODB_NAME);
-  console.log("Connected to database.");
+  console.log("Successfully connected to database.");
 
   app.listen(port, () => {
-    console.log(`Pw-manager API is listening at http://localhost:${port}`);
+    console.log(`Pw-manager API is listening at https://localhost:${port}`);
   });
 }
 
