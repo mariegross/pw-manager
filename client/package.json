@@ -11,7 +11,14 @@
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.11.3",
     "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.1.0",
+    "@storybook/addon-essentials": "^6.1.0",
+    "@storybook/addon-links": "^6.1.0",
+    "@storybook/node-logger": "^6.1.0",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

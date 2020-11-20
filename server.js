@@ -6,7 +6,7 @@ const { request } = require("express");
 
 const app = express();
 app.use(express.json());
-const port = 3100;
+const port = process.env.PORT || 3100;
 
 app.get("/api/passwords/:name", async (request, response) => {
   const { name } = request.params;
