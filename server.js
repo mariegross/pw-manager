@@ -45,7 +45,7 @@ async function run() {
   console.log("Successfully connected to database.");
 
   app.listen(port, () => {
-    console.log(`Pw-manager API is listening at http://localhost:${port}`);
+    console.log(`Pw-manager API is listening at https://localhost:${port}`);
   });
 }
 
