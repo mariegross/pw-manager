@@ -42,7 +42,7 @@ app.post("/api/passwords/", async (request, response) => {
 async function run() {
   console.log("Connecting to database...");
   await connect(process.env.MONGODB_URI, process.env.MONGODB_NAME);
-  console.log("Connected to database.");
+  console.log("Successfully connected to database.");
 
   app.listen(port, () => {
     console.log(`Pw-manager API is listening at http://localhost:${port}`);
